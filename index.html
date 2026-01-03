@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Magic Volt - Joyería Contemporánea en Plata y Acero</title>
+  <meta name="description"
+    content="Descubre Magic Volt, la joyería online líder en piezas de plata y acero. Anillos, collares y pulseras con diseño exclusivo y envío a todo el país." />
+  <meta name="keywords" content="joyería, plata, acero, anillos, collares, argentina, moda, accesorios" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://magicvolt.com/" />
+  <meta property="og:title" content="Magic Volt - Joyería Contemporánea" />
+  <meta property="og:description" content="Piezas icónicas en Plata y Acero para quienes marcan su propio camino." />
+  <meta property="og:image"
+    content="https://lh3.googleusercontent.com/aida-public/AB6AXuCd8bOZKqYbtqsY8Sis1CuGIlGoa921OFmRcaqhTMBd9XpX1mRbIKo9w18avIJeAjoyF2pd-pwsNvGZrZ5rCDMcU7941EZyrkgVTfD1GsIKMKhclKkmoqyd5-J7cHjdosFaoFZxENhQdXtqxxINpConedAKVpJVfQOoN5ly1eGVsMQ4Ff2CtpCVCFa3sCxhxByLgfwl0P_IYdnlDS1QPs8i7_19-sQMVinY61zevwVSsyNDML63OtIEv0UlZs-mExtoappem1dDVyDH" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@300..800&family=Space+Grotesk:wght@300..700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: "#f4c025",
+            secondary: "#0a192f",
+            surface: "#112240",
+            accent: "#D4AF37",
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'sans-serif'],
+            body: ['Manrope', 'sans-serif'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.5s ease-out',
+            'fade-in-up': 'fadeInUp 0.7s ease-out forwards',
+            'slide-in-right': 'slideInRight 0.3s ease-out forwards',
+            'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            fadeInUp: {
+              '0%': { opacity: '0', transform: 'translateY(20px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            slideInRight: {
+              '0%': { transform: 'translateX(100%)' },
+              '100%': { transform: 'translateX(0)' },
+            }
+          }
+        },
+      },
+    }
+  </script>
+  <style>
+    /* Custom scrollbar for webkit */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: #0a192f;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: #1e293b;
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: #334155;
+    }
+
+    /* Smooth scrolling for the whole page */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Desktop Optimization: Scale down to 80% to match user preference */
+    @media (min-width: 1024px) {
+      html {
+        zoom: 0.8;
+      }
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^19.2.3/",
+    "react": "https://esm.sh/react@^19.2.3",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0",
+    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
+    "react-dom/": "https://esm.sh/react-dom@^19.2.3/"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body class="bg-secondary text-white font-body antialiased selection:bg-primary selection:text-secondary">
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
