@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Star, ShoppingBag, Truck, ShieldCheck, ArrowLeft, Loader2 } from 'lucide-react';
+import { Star, ShoppingBag, Truck, ShieldCheck, ArrowLeft, Loader2, X } from 'lucide-react';
 import { supabase } from '../lib/supabase';
 import { useCart } from '../context/CartContext';
 import { Product } from '../types';
@@ -13,6 +13,9 @@ export const ProductDetailPage: React.FC = () => {
   const [product, setProduct] = useState<Product | undefined>(undefined);
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+
+  // State for Full Screen Image Modal
+  const [showFullImageModal, setShowFullImageModal] = useState(false);
 
   // Zoom Logic
   const imgContainerRef = useRef<HTMLDivElement>(null);
@@ -105,9 +108,10 @@ export const ProductDetailPage: React.FC = () => {
         <div className="lg:col-span-7 flex flex-col gap-4 animate-fade-in-up relative z-20" style={{ animationDelay: '200ms' }}>
           <div
             ref={imgContainerRef}
-            className="relative group w-full aspect-square sm:aspect-[4/5] lg:aspect-[4/3] overflow-hidden rounded-3xl bg-secondary border border-white/5 shadow-2xl flex items-center justify-center cursor-crosshair z-10"
+            className="relative group w-full aspect-square sm:aspect-[4/5] lg:aspect-[4/3] overflow-hidden rounded-3xl bg-secondary border border-white/5 shadow-2xl flex items-center justify-center cursor-zoom-in z-10"
             onMouseMove={handleMouseMove}
             onMouseLeave={handleMouseLeave}
+            onClick={() => setShowFullImageModal(true)}
           >
             <img
               src={product.image}
@@ -137,6 +141,11 @@ export const ProductDetailPage: React.FC = () => {
                 }}
               />
             )}
+
+            {/* Mobile Hint Overlay */}
+            <div className="absolute bottom-4 right-4 lg:hidden bg-black/60 backdrop-blur-md text-white text-xs px-3 py-1.5 rounded-full pointer-events-none opacity-80">
+              Toca para ampliar
+            </div>
           </div>
 
           {/* Desktop Zoom Flyout Portal (Appears over text column) */}
@@ -280,6 +289,29 @@ export const ProductDetailPage: React.FC = () => {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      )}
+
+      {/* Full Screen Image Modal */}
+      {showFullImageModal && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 animate-fade-in"
+          onClick={() => setShowFullImageModal(false)}
+        >
+          <div className="relative w-full max-w-4xl max-h-screen flex items-center justify-center">
+            <button
+              className="absolute -top-12 -right-2 md:right-0 text-white/50 hover:text-white p-2 hover:bg-white/10 rounded-full transition-all"
+              onClick={() => setShowFullImageModal(false)}
+            >
+              <X size={32} />
+            </button>
+            <img
+              src={product.image}
+              alt={product.name}
+              className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl"
+              onClick={(e) => e.stopPropagation()}
+            />
           </div>
         </div>
       )}
